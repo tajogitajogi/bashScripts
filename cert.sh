@@ -92,4 +92,4 @@ chmod 400 $name.key
 
 
 #create root cert
-openssl req -new -sha256 -config openssl.cnf  -key $name.key -x509 -days 3650 -out $name.crt -subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@domain"
+openssl req -new -sha256 -config openssl.cnf  -key $name.key -x509 -days 3650 -out $name.crt -subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
