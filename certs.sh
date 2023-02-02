@@ -3,8 +3,8 @@
 #check sudo
 if [[ "$(whoami)" != "root" ]]
 then
-        echo "use sudo"
-        exit
+	echo "use sudo"
+	exit
 fi
 
 #color
@@ -130,3 +130,11 @@ openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha2
 -subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
 
 echo -e "${GREEN}USR CERT CREATED ${ENDCOLOR}"
+
+
+
+
+
+
+
+
