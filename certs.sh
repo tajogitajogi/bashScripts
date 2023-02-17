@@ -129,7 +129,7 @@ openssl req -new -key $name.key -out $name.csr -config openssl.cnf \
 
 #create usr cert
 openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha256 -days 2650 -out $name.crt -extensions v3_req -extfile openssl.cnf 
-
+cat int.crt root.crt > ca-chain.crt
 echo -e "${GREEN}USR CERT CREATED ${ENDCOLOR}"
 
 
