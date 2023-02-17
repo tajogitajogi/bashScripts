@@ -111,11 +111,12 @@ name="$servername"
 openssl genrsa -out $name.key
 
 #create server csr
-openssl req -new -key $name.key -out $name.csr -config openssl.cnf
+openssl req -new -key $name.key -out $name.csr -config openssl.cnf \
+-subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
 
 #create server cert
-openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha256 -days 2650 -days 2650 -set_serial 01 -out $name.crt -extensions v3_req -extfile openssl.cnf \
--subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
+openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha256 -days 2650 -days 2650 -set_serial 01 -out $name.crt -extensions v3_req -extfile openssl.cnf 
+
 echo -e "${GREEN}SERVER CERT CREATED ${ENDCOLOR}"
 
 #create usr key
@@ -123,11 +124,11 @@ name="usr"
 openssl genrsa -out $name.key
 
 #create usr csr
-openssl req -new -key $name.key -out $name.csr -config openssl.cnf
+openssl req -new -key $name.key -out $name.csr -config openssl.cnf \
+-subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
 
 #create usr cert
-openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha256 -days 2650 -out $name.crt -extensions v3_req -extfile openssl.cnf \
--subj "/C=$country/ST=$state/L=$city/O=$org/OU=$unit/CN=$name/emailAddress=$name@$domain"
+openssl x509 -req -in $name.csr -CA int.crt -CAkey int.key -CAcreateserial -sha256 -days 2650 -out $name.crt -extensions v3_req -extfile openssl.cnf 
 
 echo -e "${GREEN}USR CERT CREATED ${ENDCOLOR}"
 
